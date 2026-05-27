@@ -121,17 +121,21 @@ https://caddyserver.com/docs/build#package-support-files-for-custom-builds-for-d
 # TOKEN
 ```
 nano /etc/caddy/caddy.env
-
+```
+```
 DUCKDNS_API_TOKEN=your-actual-token-here
-
+```
+```
 chmod 600 /etc/caddy/caddy.env
-
+```
+```
 systemctl edit caddy
-
+```
+```
 [Service]
 
 EnvironmentFile=/etc/caddy/caddy.env
-
+```
 Put this between the comment lines
 
 It should say
@@ -141,9 +145,11 @@ It should say
 (Paste here)
 
 ### edits below this comment will be discarded
+```
 
 systemctl daemon-reload
 ```
+
 Putting the api key in env file make it safer than just putting it in the raw caddyfile
 
 # Caddyfile
