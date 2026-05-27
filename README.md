@@ -149,28 +149,30 @@ Putting the api key in env file make it safer than just putting it in the raw ca
 # Caddyfile
 ```
 nano /etc/caddy/Caddyfile
-
+```
+```
 {
 
 acme_dns duckdns {env.DUCKDNS_API_TOKEN}
 
 }
+```
+This should be on the top of the caddyfile
 
-#This should be on the top of the caddyfile
+Than add
 
-#Than add
-
-
+```
 dns.your-domain.duckdns.org {
 
 reverse_proxy 192.168.86.10:5380
-
+```
 }
 
-#Than
-
+Than
+```
 systemctl restart caddy
-
+```
+```
 journalctl -u caddy --no-pager | tail -20
 ```
 Check if the cert got issued
