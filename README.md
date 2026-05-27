@@ -122,29 +122,25 @@ https://caddyserver.com/docs/build#package-support-files-for-custom-builds-for-d
 ```
 nano /etc/caddy/caddy.env
 ```
+paste this in here
 ```
 DUCKDNS_API_TOKEN=your-actual-token-here
 ```
+save and exit
 ```
 chmod 600 /etc/caddy/caddy.env
 ```
+now link it to system service
 ```
 systemctl edit caddy
 ```
+It should say "anything between here and the comment below will be contents". Put this exactly between the comment lines:
 ```
 [Service]
 
 EnvironmentFile=/etc/caddy/caddy.env
 ```
-Put this between the comment lines
-
-It should say
-
-### anything between here and the comment below will be contents
-
-(Paste here)
-
-### edits below this comment will be discarded
+save and reload daemon
 ```
 
 systemctl daemon-reload
