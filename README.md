@@ -98,7 +98,7 @@ chmod +x caddy
 ```
 Make sure it shows the duckdns module
 
-This installs the custom modules and if you want other modules go caddyserver.com/download and select the pens you want and copy the address of the download button and replace ‘ ‘ with it instead.
+This installs the custom modules and if you want other modules go caddyserver.com/download and select the plugins you want and copy the address of the download button and replace ' ' with it instead.
 
 # Moving
 ```
@@ -110,8 +110,10 @@ update-alternatives --install /usr/bin/caddy caddy /usr/bin/caddy.default 10
 
 update-alternatives --install /usr/bin/caddy caddy /usr/bin/caddy.custom 50
 ```
-This moves the custom as the main and the default as the backup and to update caddy you do caddy upgrade
-
+This moves the custom as the main and the default as the backup and to update caddy you do 
+```
+caddy upgrade
+```
 More info below
 
 https://caddyserver.com/docs/build#package-support-files-for-custom-builds-for-debianubunturaspbian
