@@ -165,9 +165,9 @@ Than add
 dns.your-domain.duckdns.org {
 
 reverse_proxy 192.168.86.10:5380
-```
-}
 
+}
+```
 Than
 ```
 systemctl restart caddy
