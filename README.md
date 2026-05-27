@@ -26,11 +26,13 @@ Dns server 9.9.9.9
 
 get into your ct console put root as username than your password you put
 
+```
 apt update && apt upgrade -y
 
 apt install curl
 
 curl -sSL https://download.technitium.com/dns/install.sh | bash
+```
 
 go to your ip:5380, the static ip you put for your ct for technitium.
 
@@ -67,7 +69,7 @@ Example:
 192.168.86.14/24 is my static ip for caddy
 
 192.168.86.1 is gateway
-
+```
 apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
 
 curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
@@ -81,23 +83,25 @@ chmod o+r /etc/apt/sources.list.d/caddy-stable.list
 apt update
 
 apt install caddy
-
+```
 This installed the default caddy with basic modules and setup systemd for you
 
 # Caddy modules
+```
 systemctl stop caddy
 
-curl -o caddy ‘https://caddyserver.com/api/download?os=linux&arch=amd64&p=github.com%2Fcaddy-dns%2Fduckdns’
+curl -o caddy 'https://caddyserver.com/api/download?os=linux&arch=amd64&p=github.com%2Fcaddy-dns%2Fduckdns'
 
 chmod +x caddy
 
 ./caddy list-modules
-
+```
 Make sure it shows the duckdns module
 
 This installs the custom modules and if you want other modules go caddyserver.com/download and select the pens you want and copy the address of the download button and replace ‘ ‘ with it instead.
 
 # Moving
+```
 dpkg-divert --divert /usr/bin/caddy.default --rename /usr/bin/caddy
 
 mv ./caddy /usr/bin/caddy.custom
@@ -105,7 +109,7 @@ mv ./caddy /usr/bin/caddy.custom
 update-alternatives --install /usr/bin/caddy caddy /usr/bin/caddy.default 10
 
 update-alternatives --install /usr/bin/caddy caddy /usr/bin/caddy.custom 50
-
+```
 This moves the custom as the main and the default as the backup and to update caddy you do caddy upgrade
 
 More info below
@@ -113,6 +117,7 @@ More info below
 https://caddyserver.com/docs/build#package-support-files-for-custom-builds-for-debianubunturaspbian
 
 # TOKEN
+```
 nano /etc/caddy/caddy.env
 
 DUCKDNS_API_TOKEN=your-actual-token-here
@@ -136,10 +141,11 @@ It should say
 ### edits below this comment will be discarded
 
 systemctl daemon-reload
-
+```
 Putting the api key in env file make it safer than just putting it in the raw caddyfile
 
 # Caddyfile
+```
 nano /etc/caddy/Caddyfile
 
 {
@@ -148,9 +154,10 @@ acme_dns duckdns {env.DUCKDNS_API_TOKEN}
 
 }
 
-This should be on the top of the caddyfile
+#This should be on the top of the caddyfile
 
-Than add
+#Than add
+
 
 dns.your-domain.duckdns.org {
 
@@ -158,12 +165,12 @@ reverse_proxy 192.168.86.10:5380
 
 }
 
-Than
+#Than
 
 systemctl restart caddy
 
 journalctl -u caddy --no-pager | tail -20
-
+```
 Check if the cert got issued
 
 If it did go on dns.you-domain.duckdns.org and it should bring you to your technitium page with secure connection and you can see the cert by clicking the icon next to the search bar.
