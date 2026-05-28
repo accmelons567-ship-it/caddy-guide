@@ -12,7 +12,7 @@ Technitium
 devices using your technitium dns
 
 # Technitium (skip if already installed)
-If you have not already have a technitium lxc to make a technitium lxc it is very simple,
+If you have not already have a technitium lxc to make a technitium lxc, it is very simple:
 
 create ct any name you want and password, use debian 13 as the template. 1vcpu, 512mib ram, 8gib storage, static ip and gateway to your router ip, and any dns you want since it going get changed
 
@@ -24,7 +24,7 @@ gateway 192.168.86.1
 
 Dns server 9.9.9.9
 
-get into your ct console put root as username than your password you put
+get into your ct console put root as username then your password you put
 
 ```
 apt update && apt upgrade -y
@@ -146,7 +146,7 @@ save and reload daemon
 systemctl daemon-reload
 ```
 
-Putting the api key in env file make it safer than just putting it in the raw caddyfile
+Putting the api key in env file make it safer then just putting it in the raw caddyfile
 
 # Caddyfile
 ```
@@ -161,7 +161,7 @@ acme_dns duckdns {env.DUCKDNS_API_TOKEN}
 ```
 This should be on the top of the caddyfile
 
-Than add
+Then add
 
 ```
 dns.your-domain.duckdns.org {
@@ -170,7 +170,7 @@ reverse_proxy 192.168.86.10:5380
 
 }
 ```
-Than
+Then
 ```
 systemctl restart caddy
 ```
