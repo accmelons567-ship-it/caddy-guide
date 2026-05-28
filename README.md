@@ -179,7 +179,7 @@ journalctl -u caddy --no-pager | tail -20
 ```
 Check if the cert got issued
 
-If it did go on dns.you-domain.duckdns.org and it should bring you to your technitium page with secure connection and you can see the cert by clicking the icon next to the search bar.
+If it did go on dns.your-domain.duckdns.org and it should bring you to your technitium page with secure connection and you can see the cert by clicking the icon next to the search bar.
 
 If you don't know how to use nano
 
@@ -188,3 +188,6 @@ ctrl +x, y, enter
 To save your edits and exit
 
 replace my ip’s with yours
+
+# NOTE!
+you don't have to setup a dns server for caddy to work you can still go on the site if you put your caddy ip in duckdns ipv4. Also it would only work if you on the same network or (lan) as your caddy. If you want to connect them outside of your network you need open ports and put your public ip which I don't recommend. 
